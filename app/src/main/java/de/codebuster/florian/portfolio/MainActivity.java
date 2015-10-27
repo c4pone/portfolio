@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    Toast mToast;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,15 @@ public class MainActivity extends AppCompatActivity {
             Button btn = (Button) findViewById(btns.getChildAt(i).getId());
             btn.setOnClickListener(new ToastClickListener(btn.getText(), this));
         }
+    }
+
+    public Toast getToast()
+    {
+        return mToast;
+    }
+
+    public void setToast(Toast mToast) {
+        this.mToast = mToast;
     }
 
     @Override

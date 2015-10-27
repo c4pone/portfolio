@@ -9,20 +9,26 @@ import android.widget.Toast;
  * Created by florian on 10/27/15.
  */
 public class ToastClickListener implements View.OnClickListener {
-    Context ctx;
+    MainActivity ctx;
     CharSequence msg;
 
-    public ToastClickListener(CharSequence msg, Context ctx) {
+    public ToastClickListener(CharSequence msg, MainActivity ctx) {
         this.msg = msg;
         this.ctx = ctx;
     }
 
     @Override
     public void onClick(View view) {
-        Toast toast = Toast.makeText(
+        if (ctx.getToast() != null) {
+            ctx.getToast().cancel();
+        }
+
+        ctx.setToast(Toast.makeText(
                 this.ctx,
                 this.msg,
-                Toast.LENGTH_SHORT);
-        toast.show();
+                Toast.LENGTH_SHORT
+        ));
+
+        ctx.getToast().show();
     }
 }
